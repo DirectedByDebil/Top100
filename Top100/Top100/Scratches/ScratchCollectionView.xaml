@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Scratches.ScratchCollectionView">
+
+    
+    <CollectionView ItemsSource="{Binding Cards}"
+                SelectionMode="Single">
+
+        <CollectionView.ItemsLayout>
+
+            <GridItemsLayout Orientation="Vertical"
+                         Span="3"
+                         VerticalItemSpacing="10"
+                         HorizontalItemSpacing="10"
+                         />
+
+        </CollectionView.ItemsLayout>
+
+        <CollectionView.ItemTemplate>
+
+            <DataTemplate>
+
+                <VerticalStackLayout Spacing="50">
+
+                    <Image Source="{Binding IconPath}"
+                       HeightRequest="50"/>
+
+                    <HorizontalStackLayout HorizontalOptions="CenterAndExpand"
+                                       Spacing="50">
+
+                        <Label Text="{Binding Name}"
+                           FontSize = "20"
+                           TextColor = "#006064"/>
+
+
+                        <Label Text="{Binding Year}"
+                           FontSize = "20"
+                           TextColor = "DarkGoldenrod"/>
+
+                    </HorizontalStackLayout>
+
+                </VerticalStackLayout>
+
+            </DataTemplate>
+
+        </CollectionView.ItemTemplate>
+
+    </CollectionView>
+
+
+</ContentView>
