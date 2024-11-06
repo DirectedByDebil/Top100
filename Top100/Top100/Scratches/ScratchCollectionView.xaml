@@ -23,8 +23,8 @@
 
                 <VerticalStackLayout Spacing="50">
 
-                    <Image Source="{Binding IconPath}"
-                       HeightRequest="50"/>
+                    <Image Source="{Binding Poster.PreviewUrl}"
+                       HeightRequest="200"/>
 
                     <HorizontalStackLayout HorizontalOptions="CenterAndExpand"
                                        Spacing="50">
