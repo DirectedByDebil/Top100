@@ -11,10 +11,10 @@
     ●	comment: комментирование кода  
 
 2.	Области применения коммитов:  
-    ●	logic: изменения в логике проекта 
-    ● ui: изменения в интерфейсе проекта
+    ●    logic: изменения в логике проекта 
+    ●    ui: изменения в интерфейсе проекта
 
 Примеры:  
     ●	```feat(logic): add registration/authorization module```  
-    ●	```delete(logi): delete sex```  
+    ●	```delete(logic): delete sex```  
     
