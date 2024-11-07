@@ -1,15 +1,14 @@
-﻿using Scratches;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace Web
 {
 
     [Serializable]
-    public struct KinopoiskData
+    public struct KinopoiskData<T>
     {
 
         [JsonPropertyName("docs")]
-        public List<CardData> Docs { get; set; }
+        public List<T> Docs { get; set; }
 
 
         [JsonPropertyName("total")]

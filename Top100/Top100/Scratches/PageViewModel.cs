@@ -18,7 +18,5 @@ namespace Scratches
 
             Cards = new ObservableCollection<CardData>(cardsDatas);
         }
-        
-
     }
 }

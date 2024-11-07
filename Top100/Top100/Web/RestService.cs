@@ -1,5 +1,4 @@
 ﻿using System.Text.Json;
-using Scratches;
 
 namespace Web
 {
@@ -30,7 +29,7 @@ namespace Web
         }
 
 
-        public async Task<List<CardData>> RefreshDataAsync(string url)
+        public async Task<List<T>> LoadDataAsync<T>(string url)
         {
 
             Uri uri = new Uri(url);
@@ -39,7 +38,7 @@ namespace Web
             HttpResponseMessage responseMessage = await _client.GetAsync(uri);
 
 
-            List<CardData> items = new();
+            List<T> items = new();
 
             if(responseMessage.IsSuccessStatusCode)
             {
@@ -47,9 +46,9 @@ namespace Web
                 string content = await responseMessage.Content.ReadAsStringAsync();
 
 
-                KinopoiskData data = JsonSerializer.Deserialize<
+                KinopoiskData<T> data = JsonSerializer.Deserialize<
                     
-                    KinopoiskData>(content, _serializerOptions);
+                    KinopoiskData<T>>(content, _serializerOptions);
 
                 items = data.Docs;
             }
