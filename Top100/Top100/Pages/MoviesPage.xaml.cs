@@ -7,7 +7,17 @@ namespace Pages
 	public partial class MoviesPage : ContentPage
 	{
 
-		private List<CardData> _cardDatas; 
+		private readonly PageViewModel<
+			
+			KinopoiskCollectionData> _collectionsModel;       
+
+
+		private readonly RestService _rest;
+
+		private readonly ScratchesPage _scratchesPage;
+
+
+		private const Api API = Api.Kinopoisk;
 
 
 		public MoviesPage()
@@ -15,7 +25,20 @@ namespace Pages
 
 			InitializeComponent();
 
-			_cardDatas = new List<CardData>();
+
+			_collectionsModel = new PageViewModel<
+				
+				KinopoiskCollectionData>();
+
+
+
+			_rest = new RestService();
+
+			_scratchesPage = new ScratchesPage();
+
+
+			BindingContext = _collectionsModel;
+
 
 			LoadCardsAsync();
 		}
@@ -27,39 +50,40 @@ namespace Pages
 			RestService rest = new RestService();
 
 
-			var test = new List<KinopoiskCollectionData>
-
-				(await rest.LoadDataAsync<KinopoiskCollectionData>(
-
-                "https://api.kinopoisk.dev/v1.4/list?" +
-				"page=1&limit=10&" +
-				"selectFields=name&selectFields=category&selectFields=moviesCount&selectFields=cover&" +
-				"notNullFields=name&notNullFields=category&notNullFields=moviesCount&notNullFields=cover.previewUrl"
-                ));
-
-			/*
- 				  ("https://api.kinopoisk.dev/v1.4/movie?" +
-				  "selectFields=name&selectFields=year&selectFields=poster&" +
-				  "year=2023&" +
-				  "notNullFields=name&notNullFields=year&notNullFields=poster.url&" +
-				  "genres.name=криминал"));
-
-				*/
-            //("https://api.kinopoisk.dev/v1.4/movie?
-			//selectFields=name&selectFields=year&selectFields=poster&
-			//id=666&type=movie"));
-
-            /*
-			 
-				https://api.kinopoisk.dev/v1.4/list?
-			page=1&limit=10&
-			selectFields=name&selectFields=category&selectFields=moviesCount&selectFields=cover&
-			notNullFields=name&notNullFields=category&notNullFields=moviesCount&notNullFields=cover.previewUrl
-			 
-			 */
+			string request = UrlFactory.GetAllCollections(API);
 
 
-            BindingContext = new PageViewModel(_cardDatas);
+			KinopoiskData<KinopoiskCollectionData> data = await
+
+				rest.GetRequestAsync<KinopoiskData
+				
+				<KinopoiskCollectionData>>(request);
+
+
+			_collectionsModel.SetCards(data.Docs);
 		}
-	}
+
+
+        private async void OnSelectionChanged(object obj)
+        {
+
+			if(UrlFactory.TryGetCurrentCollection(API,	
+				
+				obj, out string request))
+			{
+
+				KinopoiskData<CardData> cardsData = await
+
+					_rest.GetRequestAsync<KinopoiskData<CardData>>(request);
+
+
+				_scratchesPage.UpdateScratches(cardsData);
+
+
+				//#TODO update _scratchesPage Title
+
+				await Navigation.PushAsync(_scratchesPage);
+			}
+        }
+    }
 }

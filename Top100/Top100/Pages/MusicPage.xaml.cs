@@ -1,9 +1,13 @@
-namespace Pages;
-
-public partial class MusicPage : ContentPage
+namespace Pages
 {
-	public MusicPage()
+
+	public partial class MusicPage : ContentPage
 	{
-		InitializeComponent();
+
+		public MusicPage()
+		{
+
+			InitializeComponent();
+		}
 	}
 }

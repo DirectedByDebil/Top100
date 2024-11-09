@@ -29,31 +29,35 @@ namespace Web
         }
 
 
-        public async Task<List<T>> LoadDataAsync<T>(string url)
+        public async Task<T> GetRequestAsync<T>(string url) 
+            
+            where T : struct
         {
 
             Uri uri = new Uri(url);
 
 
-            HttpResponseMessage responseMessage = await _client.GetAsync(uri);
+            HttpResponseMessage responseMessage =
 
+                await _client.GetAsync(uri);
 
-            List<T> items = new();
 
             if(responseMessage.IsSuccessStatusCode)
             {
 
-                string content = await responseMessage.Content.ReadAsStringAsync();
-
-
-                KinopoiskData<T> data = JsonSerializer.Deserialize<
+                string content = await responseMessage.
                     
-                    KinopoiskData<T>>(content, _serializerOptions);
+                    Content.ReadAsStringAsync();
 
-                items = data.Docs;
+
+                T data = JsonSerializer.Deserialize<
+                    
+                    T>(content, _serializerOptions);
+
+                return data;
             }
 
-            return items;
+            return default(T);
         }
     }
 }

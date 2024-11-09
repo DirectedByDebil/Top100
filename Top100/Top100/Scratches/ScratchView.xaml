@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Scratches.ScratchCollectionView">
+             x:Class="Scratches.ScratchView">
 
 
     <CollectionView ItemsSource="{Binding Cards}"
-                SelectionMode="Single"
-                x:Name="collectionView"
-                SelectionChanged="collectionView_SelectionChanged">
+                SelectionMode="Single">
 
-        
+
         <CollectionView.ItemsLayout>
 
             <GridItemsLayout Orientation="Vertical"
@@ -27,18 +25,18 @@
                 <VerticalStackLayout Spacing="30"
                                      HeightRequest="400">
 
-                    <ImageButton Source="{Binding Poster.Url}"
+                    <ImageButton Source="{Binding Poster.PreviewUrl}"
                        HeightRequest="200"
                        HorizontalOptions="CenterAndExpand"/>
 
-                    
+
                     <Label Text="{Binding Name}"
                        FontSize = "20"
                        TextColor = "#006064"
                        HorizontalOptions="Start"/>
 
 
-                    <Label Text="{Binding Category}"
+                    <Label Text="{Binding Year}"
                        FontSize = "20"
                        TextColor = "DarkGoldenrod"
                        HorizontalOptions="Start"/>
