@@ -5,29 +5,31 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Pages"
     Shell.FlyoutBehavior="Disabled"
-    Title="Scratch it">
-    
+    Title="ScratchIt!">
+
     <TabBar>
+
         <ShellContent Title="Movies"
-                      Icon="settings.png"
+                      Icon="movies"
                       ContentTemplate="{DataTemplate local:MoviesPage}"
                       Route="MoviesPage"/>
 
-        <ShellContent Title="Music"
+        <ShellContent Title="Musics"
+                      Icon="musics"
                       ContentTemplate="{DataTemplate local:MusicPage}"
                       Route="MusicPage"/>
 
-        
+
         <ShellContent Title="Games"
+                      Icon="games"
                       ContentTemplate="{DataTemplate local:GamesPage}"
                       Route="GamesPage"/>
 
         <ShellContent Title="Books"
+                      Icon="books"
                       ContentTemplate="{DataTemplate local:BooksPage}"
                       Route="BooksPage"/>
 
     </TabBar>
-
-    
 
 </Shell>

@@ -1,0 +1,15 @@
+<svg width="512" height="512" xmlns="http://www.w3.org/2000/svg">
+ <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="514" width="514" y="-1" x="-1"/>
+  <g display="none" overflow="visible" y="0" x="0" height="100%" width="100%" id="canvasGrid">
+   <rect fill="url(#gridpattern)" stroke-width="0" y="0" x="0" height="100%" width="100%"/>
+  </g>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <text stroke="#000" transform="matrix(4.254479275923358,0,0,3.907643430824824,-1133.1961503724528,-986.5672915345049) " xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="24" id="svg_1" y="326.30745" x="275.84344" stroke-width="0" fill="#ff9205">ScratchIt!</text>
+  <text stroke="#000" transform="matrix(0.7559612880967224,0,0,4.144658865038765,38.6727320588336,-730.6627878687791) " xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="24" id="svg_2" y="266.47412" x="160.0853" stroke-opacity="null" stroke-width="0" fill="#ff9205">brown snake production</text>
+ </g>
+</svg>

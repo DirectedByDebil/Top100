@@ -3,13 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Scratches"
              x:Class="Pages.MoviesPage"
-             Title="MoviesPage">
+             Title="Movies">
 
-
-
-    <local:ScratchCollectionView SelectionChanged="OnSelectionChanged">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Home"
+                     Command="{Binding HomeCommand}" />
+        <!--IconImageSource="profile.png"-->
         
-    </local:ScratchCollectionView>
-    
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <local:ScratchCollectionView SelectionChanged="OnSelectionChanged">
+        </local:ScratchCollectionView>
+    </ContentPage.Content>
 
 </ContentPage>

@@ -1,56 +1,63 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Scratches.ScratchCollectionView">
-
+             x:Class="Scratches.ScratchCollectionView"
+             Padding="20,0,20,0">
 
     <CollectionView ItemsSource="{Binding Cards}"
-                SelectionMode="Single"
-                x:Name="collectionView"
-                SelectionChanged="collectionView_SelectionChanged">
+                    SelectionMode="Single"
+                    x:Name="collectionView"
+                    SelectionChanged="collectionView_SelectionChanged">
 
-        
         <CollectionView.ItemsLayout>
-
             <GridItemsLayout Orientation="Vertical"
-                         Span="3"
-                         VerticalItemSpacing="20"
-                         HorizontalItemSpacing="10"
-                         />
-
+                             Span="1"
+                             VerticalItemSpacing="20"
+                             HorizontalItemSpacing="10"/>
         </CollectionView.ItemsLayout>
 
         <CollectionView.ItemTemplate>
-
             <DataTemplate>
+                <Frame HasShadow="True" 
+                       CornerRadius="16" 
+                       Padding="20"
+                       Margin="0,0,0,20" 
+                       BackgroundColor="White"
+                       BorderColor="#006064">
+                    <VerticalStackLayout Spacing="10" 
+                                         HorizontalOptions="Center"
+                                         VerticalOptions="Center">
 
-                <VerticalStackLayout Spacing="30"
-                                     HeightRequest="400">
+                        <Frame CornerRadius="16"
+                               IsClippedToBounds="True"
+                               HeightRequest="300"
+                               WidthRequest="300"
+                               HorizontalOptions="Center">
+                            <Image Source="{Binding Poster.Url}"
+                                   Aspect="AspectFill"
+                                   HeightRequest="300"
+                                   WidthRequest="300"/>
+                        </Frame>
 
-                    <ImageButton Source="{Binding Poster.Url}"
-                       HeightRequest="200"
-                       HorizontalOptions="CenterAndExpand"/>
+                        <BoxView HeightRequest="1" 
+                                 Color="#E0E0E0" 
+                                 Margin="5,10,5,10"/>
 
-                    
-                    <Label Text="{Binding Name}"
-                       FontSize = "20"
-                       TextColor = "#006064"
-                       HorizontalOptions="Start"/>
+                        <Label Text="{Binding Name}"
+                               FontSize="16"
+                               TextColor="#006064"
+                               HorizontalOptions="Center"
+                               HorizontalTextAlignment="Center"/>
 
-
-                    <Label Text="{Binding Category}"
-                       FontSize = "20"
-                       TextColor = "DarkGoldenrod"
-                       HorizontalOptions="Start"/>
-
-
-                </VerticalStackLayout>
-
+                        <Label Text="{Binding Category}"
+                               FontSize="14"
+                               TextColor="DarkGoldenrod"
+                               HorizontalOptions="Center"
+                               HorizontalTextAlignment="Center"/>
+                    </VerticalStackLayout>
+                </Frame>
             </DataTemplate>
-
         </CollectionView.ItemTemplate>
 
     </CollectionView>
-
-
 </ContentView>
