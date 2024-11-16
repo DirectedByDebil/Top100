@@ -21,9 +21,16 @@ namespace Scratches
 			SelectionChangedEventArgs e)
         {
 
-			SelectionChanged?.Invoke(collectionView.SelectedItem);
+			object item = collectionView.SelectedItem;
 
-			collectionView.SelectedItem = null;
+
+			if (item != null)
+			{
+
+				SelectionChanged?.Invoke(item);
+				
+				collectionView.SelectedItem = null;
+			}
         }
     }
 }

@@ -7,6 +7,9 @@ namespace Pages
 	public partial class MoviesPage : ContentPage
 	{
 
+		private const Api API = Api.Kinopoisk;
+
+
 		private readonly PageViewModel<
 			
 			KinopoiskCollectionData> _collectionsModel;       
@@ -17,7 +20,7 @@ namespace Pages
 		private readonly ScratchesPage _scratchesPage;
 
 
-		private const Api API = Api.Kinopoisk;
+		private object? _lastCollection;
 
 
 		public MoviesPage()
@@ -59,7 +62,6 @@ namespace Pages
 				
 				<KinopoiskCollectionData>>(request);
 
-
 			_collectionsModel.SetCards(data.Docs);
 		}
 
@@ -67,7 +69,9 @@ namespace Pages
         private async void OnSelectionChanged(object obj)
         {
 
-			if(UrlFactory.TryGetCurrentCollection(API,	
+			if(_lastCollection != obj &&
+				
+				UrlFactory.TryGetCurrentCollection(API,	
 				
 				obj, out string request))
 			{
@@ -79,11 +83,12 @@ namespace Pages
 
 				_scratchesPage.UpdateScratches(cardsData);
 
-
 				//#TODO update _scratchesPage Title
 
-				await Navigation.PushAsync(_scratchesPage);
+				_lastCollection = obj;
 			}
+
+			await Navigation.PushAsync(_scratchesPage);
         }
     }
 }
