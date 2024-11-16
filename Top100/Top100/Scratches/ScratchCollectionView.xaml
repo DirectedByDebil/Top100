@@ -10,29 +10,36 @@
                     SelectionChanged="collectionView_SelectionChanged">
 
         <CollectionView.ItemsLayout>
+            
             <GridItemsLayout Orientation="Vertical"
                              Span="1"
-                             VerticalItemSpacing="20"
-                             HorizontalItemSpacing="10"/>
+                             VerticalItemSpacing="20"/>
+            
         </CollectionView.ItemsLayout>
 
+        
         <CollectionView.ItemTemplate>
+            
             <DataTemplate>
+                
                 <Frame HasShadow="True" 
-                       CornerRadius="16" 
+                       CornerRadius="30" 
                        Padding="20"
                        Margin="0,0,0,20" 
                        BackgroundColor="White"
-                       BorderColor="#006064">
+                       BorderColor="#006064"
+                       InputTransparent="True">
+                    
                     <VerticalStackLayout Spacing="10" 
                                          HorizontalOptions="Center"
                                          VerticalOptions="Center">
 
-                        <Frame CornerRadius="16"
+                        <Frame CornerRadius="30"
                                IsClippedToBounds="True"
                                HeightRequest="300"
                                WidthRequest="300"
                                HorizontalOptions="Center">
+                            
                             <Image Source="{Binding Poster.Url}"
                                    Aspect="AspectFill"
                                    HeightRequest="300"
@@ -54,10 +61,15 @@
                                TextColor="DarkGoldenrod"
                                HorizontalOptions="Center"
                                HorizontalTextAlignment="Center"/>
+                        
                     </VerticalStackLayout>
+                    
                 </Frame>
+                
             </DataTemplate>
+            
         </CollectionView.ItemTemplate>
 
+        
     </CollectionView>
 </ContentView>

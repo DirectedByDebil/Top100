@@ -22,6 +22,8 @@ namespace Scratches
         {
 
 			SelectionChanged?.Invoke(collectionView.SelectedItem);
+
+			collectionView.SelectedItem = null;
         }
     }
 }
