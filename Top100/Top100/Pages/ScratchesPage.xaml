@@ -6,7 +6,7 @@
              Title="ScratchesPage">
 
 
-    <local:ScratchView>
+    <local:ScratchView Changed="OnScratched">
         
         
     </local:ScratchView>

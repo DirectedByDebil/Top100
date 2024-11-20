@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 
-namespace Top100
+namespace Core
 {
     public static class MauiProgram
     {

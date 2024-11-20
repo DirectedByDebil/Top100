@@ -1,7 +1,7 @@
 ﻿using Android.App;
 using Android.Runtime;
 
-namespace Top100
+namespace Core
 {
     [Application]
     public class MainApplication : MauiApplication

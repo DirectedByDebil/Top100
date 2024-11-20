@@ -4,55 +4,83 @@
              x:Class="Scratches.ScratchView"
              Padding="20,0,20,0">
 
-    <CollectionView ItemsSource="{Binding Cards}" SelectionMode="None">
+    <CollectionView ItemsSource="{Binding Cards}"
+                    SelectionMode="Single"
+                    SelectionChanged="OnSelectionChanged">
+        
         <CollectionView.ItemsLayout>
+            
             <GridItemsLayout Orientation="Vertical"
                              Span="1"
                              VerticalItemSpacing="20"
                              HorizontalItemSpacing="10" />
+            
         </CollectionView.ItemsLayout>
 
+        
         <CollectionView.ItemTemplate>
             <DataTemplate>
+                
                 <Frame HasShadow="True" 
-                       Padding="20" 
+                       Padding="20"
                        Margin="5" 
                        CornerRadius="16" 
                        BackgroundColor="White"
-                       BorderColor="#006064">
+                       BorderColor="#006064"
+                       InputTransparent="True">
 
-                    <VerticalStackLayout Spacing="5" 
-                                         HorizontalOptions="Center" 
-                                         VerticalOptions="Center">
+                    <Grid>
 
-                        <Frame CornerRadius="0"  
-                               IsClippedToBounds="True" 
-                               HeightRequest="360" 
-                               WidthRequest="250">
-                            <Image Source="{Binding Poster.PreviewUrl}" 
+                        <ImageButton Source="games" 
+                               Aspect="AspectFit" 
+                               HeightRequest="400"
+                               WidthRequest="400"
+                               ZIndex="2"
+                               IsVisible="{Binding IsLocked}"/>
+
+
+                        <VerticalStackLayout Spacing="5" 
+                                             HorizontalOptions="Center" 
+                                             VerticalOptions="Center"
+                                             ZIndex="0"
+                                             IgnoreSafeArea="True">
+
+                            <Frame CornerRadius="0"  
+                                   IsClippedToBounds="True" 
+                                   HeightRequest="360" 
+                                   WidthRequest="250">
+
+                                <Image Source="{Binding Poster.PreviewUrl}" 
                                    Aspect="AspectFill" 
                                    HeightRequest="360"
                                    WidthRequest="250"/>
-                        </Frame>
 
-                        <BoxView HeightRequest="1" 
-                                 Color="#E0E0E0" 
-                                 Margin="0,10,0,10"/>
+                            </Frame>
 
-                        <Label Text="{Binding Name}" 
-                               FontSize="18" 
-                               FontAttributes="Bold" 
-                               HorizontalTextAlignment="Center" 
-                               TextColor="#006064" />
+                            <BoxView HeightRequest="1" 
+                                     Color="#E0E0E0" 
+                                     Margin="0,10,0,10"/>
 
-                        <Label Text="{Binding Year}" 
-                               FontSize="16" 
-                               HorizontalTextAlignment="Center" 
-                               TextColor="DarkGoldenrod" />
+                            <Label Text="{Binding Name}" 
+                                   FontSize="18" 
+                                   FontAttributes="Bold" 
+                                   HorizontalTextAlignment="Center" 
+                                   TextColor="#006064" />
 
-                    </VerticalStackLayout>
+                            <Label Text="{Binding Year}" 
+                                   FontSize="16" 
+                                   HorizontalTextAlignment="Center" 
+                                   TextColor="DarkGoldenrod" />
+
+                        </VerticalStackLayout>
+
+
+                    </Grid>
+                    
                 </Frame>
+            
             </DataTemplate>
+            
         </CollectionView.ItemTemplate>
     </CollectionView>
 </ContentView>

@@ -17,6 +17,9 @@ namespace Scratches
 
         [JsonPropertyName("year")]
         public int Year { get; set; }
+
+
+        public bool IsLocked { get; set; }
       
 
         public CardData(string name, PosterData poster, int year)
@@ -27,6 +30,8 @@ namespace Scratches
             Poster = poster;
 
             Year = year;
+
+            IsLocked = true;
         }
     }
 }

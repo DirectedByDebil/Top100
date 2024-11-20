@@ -16,7 +16,7 @@ namespace Scratches
 		}
 
 
-        private void collectionView_SelectionChanged(object sender,
+        private void OnSelectionChanged(object sender,
 			
 			SelectionChangedEventArgs e)
         {

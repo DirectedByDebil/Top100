@@ -1,5 +1,6 @@
 using Scratches;
 using Web;
+using Core;
 
 namespace Pages
 {
@@ -37,20 +38,29 @@ namespace Pages
 
 			_rest = new RestService();
 
-			_scratchesPage = new ScratchesPage();
+			_scratchesPage = new ScratchesPage(ContentType.Movies);
+
+
+            Loaded += OnPageLoaded;
 
 
 			BindingContext = _collectionsModel;
-
-
-			LoadCardsAsync();
 		}
 
 
-		private async void LoadCardsAsync()
+        private async void OnPageLoaded(object? sender, EventArgs e)
+        {
+
+			Loaded -= OnPageLoaded;
+			
+			await LoadCardsAsync();
+        }
+
+
+        private async Task LoadCardsAsync()
 		{
 
-			RestService rest = new RestService();
+			RestService rest = new ();
 
 
 			string request = UrlFactory.GetAllCollections(API);
@@ -61,6 +71,7 @@ namespace Pages
 				rest.GetRequestAsync<KinopoiskData
 				
 				<KinopoiskCollectionData>>(request);
+
 
 			_collectionsModel.SetCards(data.Docs);
 		}
@@ -82,6 +93,20 @@ namespace Pages
 
 
 				_scratchesPage.UpdateScratches(cardsData);
+
+
+
+				IEnumerable<ContentID>? ids =
+					
+					SessionData.GetConsumed(ContentType.Movies);
+
+
+				if(ids != null)
+				{
+
+					_scratchesPage.UpdateConsumed(ids);
+				}
+
 
 				//#TODO update _scratchesPage Title
 

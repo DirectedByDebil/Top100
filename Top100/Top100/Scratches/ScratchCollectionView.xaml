@@ -7,7 +7,7 @@
     <CollectionView ItemsSource="{Binding Cards}"
                     SelectionMode="Single"
                     x:Name="collectionView"
-                    SelectionChanged="collectionView_SelectionChanged">
+                    SelectionChanged="OnSelectionChanged">
 
         <CollectionView.ItemsLayout>
             

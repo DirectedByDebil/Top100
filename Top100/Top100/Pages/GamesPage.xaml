@@ -3,12 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Pages.GamesPage"
              Title="Games">
-    
-    
-    <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
 
-        <Label Text="COLLECTIVE MASTURBATION"
-               FontSize="Header"/>
 
-    </HorizontalStackLayout>
+    <VerticalStackLayout HorizontalOptions="CenterAndExpand"
+                         VerticalOptions="CenterAndExpand">
+
+        <Label Text="Негры все пидорасы" FontSize="Header"/>
+        <Label Text="Ёбанные блять" FontSize="Header"/>
+        <Label Text="Негры все пидорасы" FontSize="Header"/>
+        <Label Text="Будем их ебать" FontSize="Header"/>
+
+    </VerticalStackLayout>
+
+
+
 </ContentPage>
