@@ -22,7 +22,7 @@
             <DataTemplate>
                 
                 <Frame HasShadow="True" 
-                       Padding="20"
+                       Padding="0"
                        Margin="5" 
                        CornerRadius="16" 
                        BackgroundColor="White"
@@ -30,11 +30,13 @@
                        InputTransparent="True">
 
                     <Grid>
-
+                        
+                        <!--BackgroundColor="#90ff0000"-->
                         <ImageButton Source="games" 
-                               Aspect="AspectFit" 
-                               HeightRequest="400"
-                               WidthRequest="400"
+                               Aspect="AspectFill" 
+                               BackgroundColor="#90ff0000"
+                               HorizontalOptions="Fill"
+                               VerticalOptions="Fill"
                                ZIndex="2"
                                IsVisible="{Binding IsLocked}"/>
 
@@ -43,15 +45,16 @@
                                              HorizontalOptions="Center" 
                                              VerticalOptions="Center"
                                              ZIndex="0"
+                                             Padding="20"
                                              IgnoreSafeArea="True">
 
-                            <Frame CornerRadius="0"  
+                            <Frame CornerRadius="0"
                                    IsClippedToBounds="True" 
                                    HeightRequest="360" 
                                    WidthRequest="250">
 
                                 <Image Source="{Binding Poster.PreviewUrl}" 
-                                   Aspect="AspectFill" 
+                                   Aspect="AspectFill"
                                    HeightRequest="360"
                                    WidthRequest="250"/>
 

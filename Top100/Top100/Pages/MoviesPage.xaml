@@ -6,11 +6,36 @@
              Title="Movies">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Home"
-                     Command="{Binding HomeCommand}" />
-        <!--IconImageSource="profile.png"-->
-        
+        <ToolbarItem 
+        Order="Primary" 
+        Priority="0"
+        x:Name="ProfileToolbarItem"/>
+
+        <ToolbarItem 
+        Text="Профиль"
+        Order="Secondary" 
+        Priority="1"
+        Command="{Binding ProfileCommand}" />
+
+        <ToolbarItem 
+        Text="Настройки"
+        Order="Secondary" 
+        Priority="2"
+        Command="{Binding SettingsCommand}" />
+
+        <ToolbarItem 
+        Text="Начатые подборки"
+        Order="Secondary" 
+        Priority="3"
+        Command="{Binding SettingsCommand}" />
+
+        <ToolbarItem 
+        Text="О нас"
+        Order="Secondary" 
+        Priority="4"
+        Command="{Binding AboutCommand}" />
     </ContentPage.ToolbarItems>
+
 
     <ContentPage.Content>
         <local:ScratchCollectionView SelectionChanged="OnSelectionChanged">
