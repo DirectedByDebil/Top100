@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Scratches"
              x:Class="Scratches.ScratchView"
              Padding="20,0,20,0">
 
@@ -30,16 +31,20 @@
                        InputTransparent="True">
 
                     <Grid>
-                        
-                        <!--BackgroundColor="#90ff0000"-->
-                        <ImageButton Source="games" 
-                               Aspect="AspectFill" 
-                               BackgroundColor="#90ff0000"
-                               HorizontalOptions="Fill"
-                               VerticalOptions="Fill"
-                               ZIndex="2"
-                               IsVisible="{Binding IsLocked}"/>
 
+                        <GraphicsView ZIndex="3"
+                                      IsVisible="{Binding IsLocked}">
+
+                            <GraphicsView.Drawable>
+
+                                <local:Cover>
+
+                                </local:Cover>
+
+                            </GraphicsView.Drawable>
+                            
+                        </GraphicsView>
+                        
 
                         <VerticalStackLayout Spacing="5" 
                                              HorizontalOptions="Center" 
