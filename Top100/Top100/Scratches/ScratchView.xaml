@@ -1,6 +1,7 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:skia="clr-namespace:SkiaSharp.Views.Maui.Controls;assembly=SkiaSharp.Views.Maui.Controls"
              x:Class="Scratches.ScratchView"
              Padding="20,0,20,0">
 
@@ -23,26 +24,20 @@
                        CornerRadius="16" 
                        BackgroundColor="White"
                        BorderColor="#006064"
-                       InputTransparent="False">
+                       InputTransparent = "False">
                     <Grid>
-                        <toolkit:DrawingView x:Name="DrawingView"
-                             ZIndex="1"
-                             HorizontalOptions="Fill"
-                             VerticalOptions="Fill"
-                             LineColor="Black"
-                             LineWidth="10"
-                             IsEnabled="{Binding IsDrawingEnabled}"
-                             DrawingLineCompleted="OnDrawingLineCompleted" />
-
-                        <!-- Ластик, который будет стирать линии -->
-                        <toolkit:DrawingView x:Name="EraserDrawingView"
-                             ZIndex="2"
-                             HorizontalOptions="Fill"
-                             VerticalOptions="Fill"
-                             LineColor="Blue"
-                             LineWidth="125"
-                             IsEnabled="{Binding IsEraserEnabled}"
-                             DrawingLineCompleted="OnEraseLineCompleted" />
+                        <!-- Маска -->
+                        <skia:SKCanvasView x:Name="MaskCanvas"
+                                           ZIndex="999"
+                                           HorizontalOptions="FillAndExpand"
+                                           IsEnabled="True"
+                                           VerticalOptions="FillAndExpand"
+                                           PaintSurface="OnPaintSurface">
+                            <!-- Добавляем PanGestureRecognizer для отслеживания перемещений -->
+                            <skia:SKCanvasView.GestureRecognizers>
+                                <PanGestureRecognizer PanUpdated="OnPanUpdated" />
+                            </skia:SKCanvasView.GestureRecognizers>
+                        </skia:SKCanvasView>
 
                         <VerticalStackLayout Spacing="5" 
                                              HorizontalOptions="Center" 

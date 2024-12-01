@@ -1,7 +1,10 @@
 using Core;
 using CommunityToolkit.Mvvm.Input;
-using System.ComponentModel;
-using System.Windows.Input;
+using SkiaSharp;
+using SkiaSharp.Views.Maui;
+using SkiaSharp.Views.Maui.Controls;
+using System.Diagnostics;
+using Microsoft.Maui.Controls;
 
 namespace Scratches
 {
@@ -9,132 +12,81 @@ namespace Scratches
     {
         public event Action<ContentID>? Changed;
 
-        private bool _isDrawingEnabled = true;  // Управляет рисованием
-        private bool _isEraserEnabled = false;  // Управляет ластиком
+        private SKBitmap maskBitmap; // Маска для управления прозрачностью
+        private SKCanvas maskCanvas; // Canvas для рисования на маске
+        private bool isMaskInitialized = false;
 
-        // Множество состояний для каждой карточки (стерта или нет)
-        private Dictionary<int, bool> erasedCards = new Dictionary<int, bool>(); // хранение состояния
-
-        public bool IsDrawingEnabled
-        {
-            get => _isDrawingEnabled;
-            set
-            {
-                _isDrawingEnabled = value;
-                OnPropertyChanged(nameof(IsDrawingEnabled));
-            }
-        }
-
-        public bool IsEraserEnabled
-        {
-            get => _isEraserEnabled;
-            set
-            {
-                _isEraserEnabled = value;
-                OnPropertyChanged(nameof(IsEraserEnabled));
-            }
-        }
+        public event Action<object>? Touch;
 
         public ScratchView()
         {
             InitializeComponent();
         }
 
+        private void OnPaintSurface(object sender, SKPaintSurfaceEventArgs e)
+        {
+            var surface = e.Surface;
+            var canvas = surface.Canvas;
+
+            // Очистка фона на каждом обновлении
+            canvas.Clear(SKColors.Transparent);
+
+            // Инициализация маски, если еще не была создана
+            if (!isMaskInitialized)
+            {
+                maskBitmap = new SKBitmap(e.Info.Width, e.Info.Height);
+                maskCanvas = new SKCanvas(maskBitmap);
+                maskCanvas.Clear(SKColors.Gray); // Маска прозрачная изначально
+                isMaskInitialized = true;
+            }
+
+            // Рисуем на холсте маску
+            var paint = new SKPaint { BlendMode = SKBlendMode.SrcOver };
+            canvas.DrawBitmap(maskBitmap, 0, 0, paint);
+        }
+
+        private void OnPanUpdated(object sender, PanUpdatedEventArgs e)
+        {
+            if (e.StatusType == GestureStatus.Running)
+            {
+                // Получаем размеры SKCanvasView, чтобы правильно посчитать координаты
+                var canvasView = (SKCanvasView)sender;
+                var width = canvasView.Width;
+                var height = canvasView.Height;
+
+                // Получаем координаты касания относительно холста
+                var touchPoint = new SKPoint((float)e.TotalX, (float)e.TotalY);
+
+                Debug.WriteLine($"Pan updated: {e.TotalX}, {e.TotalY} (scaled to canvas: {touchPoint.X}, {touchPoint.Y})");
+
+                // Рисуем на маске
+                using (var paint = new SKPaint
+                {
+                    //Color = SKColors.Transparent,
+                    BlendMode = SKBlendMode.Clear,
+                    IsAntialias = true,
+                    StrokeWidth = 300f,  // Размер стирания
+                    IsStroke = true
+                })
+                {
+                    maskCanvas.DrawCircle(touchPoint.X, touchPoint.Y, 300, paint);
+                }
+
+                // Обновляем только эту поверхность, чтобы перерисовать на ней маску
+                ((SKCanvasView)sender).InvalidateSurface();
+            }
+        }
+
         private void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             object item = e.CurrentSelection[0];
 
-            if (item is CardDataTest card)
+            if (item is CardData card)
             {
                 card.IsLocked = false;
-                int year = int.Parse(card.Year);
-                ContentID id = new(card.Name, year);
+                ContentID id = new(card.Name, card.Year);
                 Changed?.Invoke(id);
             }
         }
-
-        // Обработчик для завершения рисования
-        private void OnDrawingLineCompleted(object sender, EventArgs e)
-        {
-            // После рисования сохраняем состояние карточки
-            if (BindingContext is CardDataTest card)
-            {
-                if (!erasedCards.ContainsKey(card.GetHashCode()))
-                {
-                    erasedCards[card.GetHashCode()] = false; // Маркируем, что карточка не стерта
-                }
-            }
-        }
-
-        // Обработчик для завершения стирания
-        private void OnEraseLineCompleted(object sender, EventArgs e)
-        {
-            // После стирания сохраняем состояние карточки как стертое
-            if (BindingContext is CardDataTest card)
-            {
-                if (erasedCards.ContainsKey(card.GetHashCode()))
-                {
-                    erasedCards[card.GetHashCode()] = true; // Карточка стерта, запрещаем стирать дальше
-                }
-            }
-        }
-
-        // Метод для включения ластика
-        private void OnEraseCommand()
-        {
-            IsDrawingEnabled = false;
-            IsEraserEnabled = true;
-        }
-
-        // Метод для включения рисования
-        private void OnDrawCommand()
-        {
-            IsDrawingEnabled = true;
-            IsEraserEnabled = false;
-        }
-
-        // Проверка, была ли карточка стерта
-        private bool IsCardErased(CardDataTest card)
-        {
-            return erasedCards.ContainsKey(card.GetHashCode()) && erasedCards[card.GetHashCode()];
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual void OnPropertyChanged(string propertyName) =>
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    // Данные карточки
-    public class CardDataTest : INotifyPropertyChanged
-    {
-        private bool isLocked = true;
-
-        public string Name { get; set; }
-        public string Year { get; set; }
-
-        public bool IsLocked
-        {
-            get => isLocked;
-            set
-            {
-                if (isLocked != value)
-                {
-                    isLocked = value;
-                    OnPropertyChanged(nameof(IsLocked));
-                }
-            }
-        }
-
-        public ICommand EraseCommand => new RelayCommand(OnErase);
-
-        private void OnErase()
-        {
-            // Включение ластика
-            IsLocked = false;
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual void OnPropertyChanged(string propertyName) =>
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 }

@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
+using SkiaSharp.Views.Maui.Controls.Hosting;
 
 namespace Core
 {
@@ -9,6 +10,7 @@ namespace Core
         {
             var builder = MauiApp.CreateBuilder();
             builder
+                .UseSkiaSharp()
                 .UseMauiApp<App>()
                 .UseMauiCommunityToolkit();
                 
