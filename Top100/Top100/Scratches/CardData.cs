@@ -19,19 +19,6 @@ namespace Scratches
         public int Year { get; set; }
 
 
-        public bool IsLocked { get; set; }
-      
-
-        public CardData(string name, PosterData poster, int year)
-        {
-
-            Name = name;
-
-            Poster = poster;
-
-            Year = year;
-
-            IsLocked = true;
-        }
+        public bool IsLocked { get; set; } = true;
     }
 }

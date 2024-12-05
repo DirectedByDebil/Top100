@@ -57,7 +57,7 @@ namespace Web
                 return data;
             }
 
-            return default(T);
+            return default;
         }
     }
 }

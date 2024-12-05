@@ -3,13 +3,13 @@ using System;
 namespace Scratches
 {
 
-	public partial class ScratchCollectionView : ContentView
+	public partial class AllCollectionsView : ContentView
 	{
 
 		public event Action<object>? SelectionChanged;
 
 
-		public ScratchCollectionView()
+		public AllCollectionsView()
 		{
 
 			InitializeComponent();

@@ -69,6 +69,12 @@
 	  <Compile Update="Pages\MoviesPage.xaml.cs">
 	    <DependentUpon>MoviesPage.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Scratches\AllCollectionsView.xaml.cs">
+	    <DependentUpon>AllCollectionsView.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Scratches\CurrentCollectionView.xaml.cs">
+	    <DependentUpon>CurrentCollectionView.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -87,10 +93,16 @@
 	  <MauiXaml Update="Pages\ScratchesPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Scratches\ScratchCollectionView.xaml">
+	  <MauiXaml Update="Scratches\CardBack.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Scratches\ScratchView.xaml">
+	  <MauiXaml Update="Scratches\AllCollectionsView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Scratches\CardView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Scratches\CurrentCollectionView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
