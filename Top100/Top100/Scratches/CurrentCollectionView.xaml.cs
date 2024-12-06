@@ -3,13 +3,13 @@ using Core;
 namespace Scratches
 {
 
-	public partial class ScratchView : ContentView
+	public partial class CurrentCollectionView : ContentView
 	{
 
 		public event Action<ContentID>? Changed;
 
 
-		public ScratchView()
+		public CurrentCollectionView()
 		{
 
 			InitializeComponent();

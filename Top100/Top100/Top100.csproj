@@ -90,6 +90,12 @@
 	  <Compile Update="Scratches\CurrentCollectionView.xaml.cs">
 	    <DependentUpon>CurrentCollectionView.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Scratches\AllCollectionsView.xaml.cs">
+	    <DependentUpon>AllCollectionsView.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Scratches\CurrentCollectionView.xaml.cs">
+	    <DependentUpon>CurrentCollectionView.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 
