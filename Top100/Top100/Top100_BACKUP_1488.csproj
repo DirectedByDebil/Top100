@@ -71,24 +71,14 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="CommunityToolkit.Maui" Version="9.1.0" />
-		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.3.2" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
-		<PackageReference Include="Microsoft.Maui.Graphics" Version="$(MauiVersion)" />
-		<PackageReference Include="SkiaSharp.Views.Maui.Controls" Version="2.88.9" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <Compile Update="Pages\MoviesPage.xaml.cs">
 	    <DependentUpon>MoviesPage.xaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="Scratches\AllCollectionsView.xaml.cs">
-	    <DependentUpon>AllCollectionsView.xaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="Scratches\CurrentCollectionView.xaml.cs">
-	    <DependentUpon>CurrentCollectionView.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
@@ -109,6 +99,9 @@
 	  <MauiXaml Update="Pages\ScratchesPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+<<<<<<< HEAD
+	  <MauiXaml Update="Scratches\ScratchCollectionView.xaml">
+=======
 	  <MauiXaml Update="Resources\Styles\DarkTheme.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -116,15 +109,10 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Scratches\CardBack.xaml">
+>>>>>>> 23488faba06146930ddea2b77e9fe6d71de2bc02
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Scratches\AllCollectionsView.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Scratches\CardView.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Scratches\CurrentCollectionView.xaml">
+	  <MauiXaml Update="Scratches\ScratchView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

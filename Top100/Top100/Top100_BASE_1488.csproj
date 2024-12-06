@@ -55,21 +55,6 @@
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
 	</ItemGroup>
 
-	
-	<ItemGroup>
-	  <None Remove="Resources\Shirts\rubashka_gold_dark.png" />
-	  <None Remove="Resources\Shirts\rubashka_gold_light.png" />
-	  <None Remove="Resources\Shirts\shirt_dark.png" />
-	  <None Remove="Resources\Shirts\shirt_light.png" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <EmbeddedResource Include="Resources\Shirts\rubashka_gold_dark.png" />
-	  <EmbeddedResource Include="Resources\Shirts\rubashka_gold_light.png" />
-	  <EmbeddedResource Include="Resources\Shirts\shirt_dark.png" />
-	  <EmbeddedResource Include="Resources\Shirts\shirt_light.png" />
-	</ItemGroup>
-
 	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Maui" Version="9.1.0" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.3.2" />
@@ -92,7 +77,6 @@
 	  </Compile>
 	</ItemGroup>
 
-
 	<ItemGroup>
 	  <MauiXaml Update="Pages\BooksPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
@@ -107,12 +91,6 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\ScratchesPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Resources\Styles\DarkTheme.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Resources\Styles\LightTheme.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Scratches\CardBack.xaml">
