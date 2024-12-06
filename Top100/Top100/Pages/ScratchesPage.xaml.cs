@@ -48,8 +48,6 @@ namespace Pages
         {
 
 			SessionData.AddConsumed(_contentType, id);
-
-			_cardsModel.InvokePropertyChanged(new PropertyChangedEventArgs("IsLocked"));
         }
     }
 }
