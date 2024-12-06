@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Top100.Resources.Styles.LightTheme">
+    
+    <Color x:Key="BackgroundColorTheme">White</Color>
+    <Color x:Key="FrameBorderColor">#006064</Color>
+    <Color x:Key="TextColorName">#006064</Color>
+    <Color x:Key="TextColorYear">DarkGoldenrod</Color>
+    <Color x:Key="TextColorCategory">DarkGoldenrod</Color>
+    
+</ResourceDictionary>

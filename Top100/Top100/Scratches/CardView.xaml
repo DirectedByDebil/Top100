@@ -8,9 +8,9 @@
     <Frame HasShadow="True" 
            Padding="0"
            Margin="5" 
-           CornerRadius="16" 
-           BackgroundColor="White"
-           BorderColor="#006064"
+           CornerRadius="30" 
+           BackgroundColor="{DynamicResource BackgroundColorTheme}"
+           BorderColor="{DynamicResource FrameBorderColor}"
            InputTransparent = "False">
 
         <Grid>
@@ -43,23 +43,22 @@
 
             
                 <BoxView HeightRequest="1" 
-                                         Color="#E0E0E0" 
-                                         Margin="0,10,0,10"/>
+                        Color="#E0E0E0" 
+                        Margin="0,10,0,10"/>
 
-            
+
                 <Label Text="{Binding Name}" 
-                                       FontSize="18" 
-                                       FontAttributes="Bold" 
-                                       HorizontalTextAlignment="Center" 
-                                       TextColor="#006064" />
+                   FontSize="16" 
+                   FontAttributes="Bold" 
+                   HorizontalTextAlignment="Center" 
+                   TextColor="{DynamicResource TextColorName}" />
 
-            
                 <Label Text="{Binding Year}" 
-                                       FontSize="16" 
-                                       HorizontalTextAlignment="Center" 
-                                       TextColor="DarkGoldenrod" />
-        
-            
+                   FontSize="14" 
+                   HorizontalTextAlignment="Center" 
+                   TextColor="{DynamicResource TextColorYear}" />
+
+
             </VerticalStackLayout>
 
         </Grid>

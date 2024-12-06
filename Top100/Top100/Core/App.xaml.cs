@@ -16,6 +16,12 @@ namespace Core
             InitializeComponent();
 
 
+            ApplyTheme(Current.RequestedTheme);
+
+
+            Current.RequestedThemeChanged += (s, e) => ApplyTheme(e.RequestedTheme);
+
+            
             MainPage = new AppShell();
 
 
@@ -38,7 +44,23 @@ namespace Core
 
 
             await SessionData.LoadAsync(_consumedContent, _options);
+        
         }
+
+        private void ApplyTheme(AppTheme theme)
+        {
+            if (theme == AppTheme.Dark)
+            {
+                Resources.MergedDictionaries.Add(new Top100.Resources.Styles.DarkTheme());
+            }
+            else
+            {
+                Resources.MergedDictionaries.Add(new Top100.Resources.Styles.LightTheme());
+            }
+        }
+
+
+
 
 
         protected override async void OnSleep()

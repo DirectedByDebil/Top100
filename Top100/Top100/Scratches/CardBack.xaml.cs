@@ -1,6 +1,8 @@
+using System.Diagnostics;
 using SkiaSharp;
 using SkiaSharp.Views.Maui;
 using SkiaSharp.Views.Maui.Controls;
+using Microsoft.Maui.ApplicationModel;
 
 namespace Scratches
 {
@@ -10,15 +12,15 @@ namespace Scratches
 
         public event Action Scratched;
 
-
-        private const int MaxPoints = 20;
+        private const int MaxPoints = 15;
 
         private readonly SKPaint _paint;
 
         private SKCanvas _canvas;
 
-
         private List<SKPoint> _points;
+
+        private SKBitmap _backgroundImage;  //Комментарий
 
 
         public CardBack()
@@ -41,8 +43,40 @@ namespace Scratches
 
 
             InitializeComponent();
-		}
 
+
+            LoadBackgroundImage(); //Комментарий
+
+
+            Application.Current.RequestedThemeChanged += OnThemeChanged; //Комментарий
+
+        }
+
+
+        private void OnThemeChanged(object sender, AppThemeChangedEventArgs e) //Комментарий
+        {
+            LoadBackgroundImage();
+        }
+
+        //Комментарий
+        private void LoadBackgroundImage()
+        {
+            var assembly = typeof(CardBack).Assembly;
+            string resourceName = Application.Current?.RequestedTheme == AppTheme.Dark
+                ? "Top100.Resources.Shirts.rubashka_gold_dark.png"
+                : "Top100.Resources.Shirts.rubashka_gold_light.png";
+
+            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+            {
+                if (stream == null)
+                {
+                    Debug.WriteLine($"{resourceName} не найден.");
+                    return;
+                }
+
+                _backgroundImage = SKBitmap.Decode(stream);
+            }
+        }
 
 
         private void OnPaintSurface(object sender, SKPaintSurfaceEventArgs e)
@@ -50,15 +84,25 @@ namespace Scratches
 
             _canvas = e.Surface.Canvas;
 
+            var _info = e.Info; //Комментарий
 
-            //#TODO вместо Clear DrawImage
-            _canvas.Clear(SKColors.Orange);
+            _canvas.Clear(SKColors.Transparent); //Комментарий
 
+            //Комментарий
+            if (_backgroundImage != null)
+            {
+
+                var destRect = new SKRect(0, 0, _info.Width, _info.Height);
+
+                _canvas.DrawBitmap(_backgroundImage, destRect);
+
+            }
 
             foreach (SKPoint point in _points)
             {
 
-                _canvas.DrawCircle(point, 100, _paint);
+                _canvas.DrawCircle(point, 200, _paint);
+
             }
         }
 
