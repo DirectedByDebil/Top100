@@ -36,9 +36,10 @@
         Command="{Binding AboutCommand}" />
     </ContentPage.ToolbarItems>
 
-
-    <local:CurrentCollectionView Changed="OnScratched"/>
-
-
+    <local:ScratchView Changed="OnScratched">
+        
+        
+    </local:ScratchView>
+    
 
 </ContentPage>

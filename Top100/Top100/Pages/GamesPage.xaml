@@ -8,7 +8,10 @@
     <VerticalStackLayout HorizontalOptions="CenterAndExpand"
                          VerticalOptions="CenterAndExpand">
 
-        <Label Text="Страница с играми" FontSize="Header"/>
+        <Label Text="Негры все пидорасы" FontSize="Header"/>
+        <Label Text="Ёбанные блять" FontSize="Header"/>
+        <Label Text="Негры все пидорасы" FontSize="Header"/>
+        <Label Text="Будем их ебать" FontSize="Header"/>
 
     </VerticalStackLayout>
 

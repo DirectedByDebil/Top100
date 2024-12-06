@@ -60,12 +60,15 @@ namespace Pages
         private async Task LoadCardsAsync()
 		{
 
+			RestService rest = new ();
+
+
 			string request = UrlFactory.GetAllCollections(API);
 
 
 			KinopoiskData<KinopoiskCollectionData> data = await
 
-				_rest.GetRequestAsync<KinopoiskData
+				rest.GetRequestAsync<KinopoiskData
 				
 				<KinopoiskCollectionData>>(request);
 

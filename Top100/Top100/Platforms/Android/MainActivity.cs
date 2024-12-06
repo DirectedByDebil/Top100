@@ -25,7 +25,7 @@ namespace Top100
 
             if (isDarkTheme)
             {
-                Window.SetStatusBarColor(Android.Graphics.Color.ParseColor("#2E2C38")); // #2E2C38
+                Window.SetStatusBarColor(Android.Graphics.Color.ParseColor("#2E2C38"));
                 Window.DecorView.SystemUiVisibility = (StatusBarVisibility)SystemUiFlags.Visible;
             }
             else

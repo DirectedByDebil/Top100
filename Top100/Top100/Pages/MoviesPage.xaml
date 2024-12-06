@@ -38,11 +38,8 @@
 
 
     <ContentPage.Content>
-
-        
-        <local:AllCollectionsView SelectionChanged="OnSelectionChanged"/>
-
-
+        <local:ScratchCollectionView SelectionChanged="OnSelectionChanged">
+        </local:ScratchCollectionView>
     </ContentPage.Content>
 
 </ContentPage>
