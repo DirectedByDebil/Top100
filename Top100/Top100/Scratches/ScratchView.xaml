@@ -32,19 +32,6 @@
 
                     <Grid>
 
-                        <GraphicsView ZIndex="3"
-                                      IsVisible="{Binding IsLocked}">
-
-                            <GraphicsView.Drawable>
-
-                                <local:Cover>
-
-                                </local:Cover>
-
-                            </GraphicsView.Drawable>
-                            
-                        </GraphicsView>
-                        
 
                         <VerticalStackLayout Spacing="5" 
                                              HorizontalOptions="Center" 
