@@ -7,7 +7,7 @@ using Microsoft.Maui;
 
 namespace Top100
 {
-    [Activity(Theme = "@style/Maui.SplashTheme", MainLauncher = true, LaunchMode = LaunchMode.SingleTop,
+    [Activity(Theme = "@style/MyTheme", MainLauncher = true, LaunchMode = LaunchMode.SingleTop,
         ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | 
         ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize | ConfigChanges.Density)]
     public class MainActivity : MauiAppCompatActivity
@@ -25,7 +25,7 @@ namespace Top100
 
             if (isDarkTheme)
             {
-                Window.SetStatusBarColor(Android.Graphics.Color.ParseColor("#2E2C38")); // #2E2C38
+                Window.SetStatusBarColor(Android.Graphics.Color.ParseColor("#2E2C38"));
                 Window.DecorView.SystemUiVisibility = (StatusBarVisibility)SystemUiFlags.Visible;
             }
             else
