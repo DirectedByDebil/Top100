@@ -48,13 +48,13 @@
 
 
                 <Label Text="{Binding Name}" 
-                   FontSize="16" 
+                   FontSize="28" 
                    FontAttributes="Bold" 
                    HorizontalTextAlignment="Center" 
                    TextColor="{DynamicResource TextColorName}" />
 
                 <Label Text="{Binding Year}" 
-                   FontSize="14" 
+                   FontSize="24" 
                    HorizontalTextAlignment="Center" 
                    TextColor="{DynamicResource TextColorYear}" />
 

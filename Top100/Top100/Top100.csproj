@@ -54,15 +54,6 @@
 		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
 	</ItemGroup>
-
-	
-	<ItemGroup>
-	  <None Remove="Resources\Shirts\rubashka_gold_dark.png" />
-	  <None Remove="Resources\Shirts\rubashka_gold_light.png" />
-	  <None Remove="Resources\Shirts\shirt_dark.png" />
-	  <None Remove="Resources\Shirts\shirt_light.png" />
-	</ItemGroup>
-
 	
 	<ItemGroup>
 	  <AndroidResource Include="Resources\values-night\colors.xml" />

@@ -18,6 +18,8 @@ namespace Core
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+                    fonts.AddFont("Fatal (TRIAL) Bold.ttf", "Fatal");
+                    fonts.AddFont("Secession_Bold.ttf", "Secession");
                 });
 
 #if DEBUG
