@@ -43,7 +43,7 @@
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#ffffff" />
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#ffffff" BaseSize="280,280" />
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" BaseSize="280,280" />
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
@@ -54,13 +54,12 @@
 		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
 	</ItemGroup>
-
 	
 	<ItemGroup>
-	  <None Remove="Resources\Shirts\rubashka_gold_dark.png" />
-	  <None Remove="Resources\Shirts\rubashka_gold_light.png" />
-	  <None Remove="Resources\Shirts\shirt_dark.png" />
-	  <None Remove="Resources\Shirts\shirt_light.png" />
+	  <AndroidResource Include="Resources\values-night\colors.xml" />
+	  <AndroidResource Include="Resources\values-night\styles.xml" />
+	  <AndroidResource Include="Resources\values\colors.xml" />
+	  <AndroidResource Include="Resources\values\styles.xml" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -133,6 +132,11 @@
 	  <MauiXaml Update="Scratches\CurrentCollectionView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	</ItemGroup>
+
+
+	<ItemGroup>
+	  <Folder Include="Platforms\Android\Resources\" />
 	</ItemGroup>
 
 </Project>

@@ -20,7 +20,7 @@ namespace Scratches
 
         private List<SKPoint> _points;
 
-        private SKBitmap _backgroundImage;  //Комментарий
+        private SKBitmap _backgroundImage;
 
 
         public CardBack()
@@ -45,20 +45,20 @@ namespace Scratches
             InitializeComponent();
 
 
-            LoadBackgroundImage(); //Комментарий
+            LoadBackgroundImage();
 
 
-            Application.Current.RequestedThemeChanged += OnThemeChanged; //Комментарий
+            Application.Current.RequestedThemeChanged += OnThemeChanged;
 
         }
 
 
-        private void OnThemeChanged(object sender, AppThemeChangedEventArgs e) //Комментарий
+        private void OnThemeChanged(object sender, AppThemeChangedEventArgs e)
         {
             LoadBackgroundImage();
         }
 
-        //Комментарий
+
         private void LoadBackgroundImage()
         {
             var assembly = typeof(CardBack).Assembly;
@@ -84,11 +84,11 @@ namespace Scratches
 
             _canvas = e.Surface.Canvas;
 
-            var _info = e.Info; //Комментарий
+            var _info = e.Info;
 
-            _canvas.Clear(SKColors.Transparent); //Комментарий
+            _canvas.Clear(SKColors.Transparent);
 
-            //Комментарий
+
             if (_backgroundImage != null)
             {
 

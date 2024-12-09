@@ -1,6 +1,7 @@
 using Scratches;
 using Web;
 using Core;
+using System.Xml;
 
 namespace Pages
 {
@@ -26,11 +27,49 @@ namespace Pages
 
 		public MoviesPage()
 		{
+            InitializeComponent();
 
-			InitializeComponent();
 
 
-			_collectionsModel = new PageViewModel<
+
+            ToolbarItems.Add(new ToolbarItem
+            {
+                Order = ToolbarItemOrder.Primary,
+                Command = new Command(() => { })
+            });
+
+            ToolbarItems.Add(new ToolbarItem
+            {
+                Text = "Профиль",
+                Order = ToolbarItemOrder.Secondary,
+                Command = new Command(() => { })
+            });
+
+            ToolbarItems.Add(new ToolbarItem
+            {
+                Text = "Настройки",
+                Order = ToolbarItemOrder.Secondary,
+                Command = new Command(() => { })
+            });
+
+            ToolbarItems.Add(new ToolbarItem
+            {
+                Text = "Начатые подборки",
+                Order = ToolbarItemOrder.Secondary,
+                Command = new Command(() => { })
+            });
+
+            ToolbarItems.Add(new ToolbarItem
+            {
+                Text = "О нас",
+                Order = ToolbarItemOrder.Secondary,
+                Command = new Command(() => { })
+            });
+
+
+
+
+            _collectionsModel = new PageViewModel<
 				
 				KinopoiskCollectionData>();
 
