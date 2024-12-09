@@ -30,10 +30,10 @@ namespace Pages
 		}
 
 
-		public void UpdateScratches(KinopoiskData<CardData> cardsData)
+		public void UpdateScratches(IReadOnlyCollection<CardData> cards)
 		{
 
-			_cardsModel.SetCards(cardsData.Docs);
+			_cardsModel.SetCards(cards);
 		}
 
 

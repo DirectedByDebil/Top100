@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<views:ApiPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Scratches"
+             xmlns:views="clr-namespace:Pages"
              x:Class="Pages.MoviesPage"
              Title="Movies">
-
     
-    <ContentPage.Content>
-
-        
-        <local:AllCollectionsView SelectionChanged="OnSelectionChanged"/>
+    
 
 
-    </ContentPage.Content>
-
-</ContentPage>
+</views:ApiPage>

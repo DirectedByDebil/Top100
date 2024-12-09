@@ -1,30 +1,32 @@
-﻿namespace Web
+﻿using Core;
+
+namespace Web
 {
     public static class UrlFactory
     {
 
-        public static string GetAllCollections(Api api)
+        public static string GetAllCollections(ContentType type)
         {
 
-            switch (api)
+            switch (type)
             {
 
-                case Api.Kinopoisk:
+                case ContentType.Movies:
 
                     return GetKinopoiskAll();
 
 
-                case Api.LastFm:
+                case ContentType.Music:
 
                     return GetLastFmAll();
 
 
-                case Api.RAWG:
+                case ContentType.Games:
 
                     return GetRawgAll();
 
 
-                case Api.Books:
+                case ContentType.Books:
 
                     return GetBooksAll();
 
@@ -36,30 +38,30 @@
         }
 
 
-        public static bool TryGetCurrentCollection(Api api,
+        public static bool TryGetCurrentCollection(ContentType type,
             
             object item, out string request)
         {
 
-            switch (api)
+            switch (type)
             {
 
-                case Api.Kinopoisk:
+                case ContentType.Movies:
                     
                     return TryGetKinopoiskCurrent(item, out request);
 
                 
-                case Api.LastFm:
+                case ContentType.Music:
                     
                     return TryGetLastFmCurrent(item, out request);
                 
 
-                case Api.RAWG:
+                case ContentType.Games:
 
                     return TryGetRawgCurrent(item, out request);
                 
 
-                case Api.Books:
+                case ContentType.Books:
                     
                     return TryGetBooksCurrent(item, out request);
                 
