@@ -15,8 +15,15 @@ namespace Pages
 			get => ContentType.Movies;
 		}
 
+		protected override KeyValuePair<string, string> ApiToken
+		{
 
-		private readonly PageViewModel<
+			get => new ("X-API-KEY", "1C34DM1-T0P43D3-KJM6SXA-BASTTPZ");
+		}
+
+
+
+        private readonly PageViewModel<
 			
 			KinopoiskCollectionData> _collectionsModel;       
 
@@ -25,7 +32,6 @@ namespace Pages
 		{
 
             InitializeComponent();
-
 
 
             _collectionsModel = new PageViewModel<
@@ -42,7 +48,7 @@ namespace Pages
 
             KinopoiskData<KinopoiskCollectionData> data = await
 
-                Rest.GetRequestAsync<KinopoiskData
+                Rest.GetAsync<KinopoiskData
 
                 <KinopoiskCollectionData>>(request);
 
@@ -57,7 +63,7 @@ namespace Pages
 
             KinopoiskData<CardData> cardsData = await
 				
-				Rest.GetRequestAsync<KinopoiskData<CardData>>(request);
+				Rest.GetAsync<KinopoiskData<CardData>>(request);
 
 
 			return cardsData.Docs;

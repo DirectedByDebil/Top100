@@ -16,11 +16,6 @@ namespace Web
 
             _client = new HttpClient();
             
-            _client.DefaultRequestHeaders.Add("X-API-KEY",
-                
-                "1C34DM1-T0P43D3-KJM6SXA-BASTTPZ");
-
-            
             _serializerOptions = new JsonSerializerOptions
             {
 
@@ -29,7 +24,14 @@ namespace Web
         }
 
 
-        public async Task<T> GetRequestAsync<T>(string url) 
+        public void AddHeader(string key, string value)
+        {
+
+            _client.DefaultRequestHeaders.Add(key, value);
+        }
+
+
+        public async Task<T> GetAsync<T>(string url) 
             
             where T : struct
         {

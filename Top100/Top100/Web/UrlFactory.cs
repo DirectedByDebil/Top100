@@ -1,4 +1,5 @@
 ﻿using Core;
+using static System.Net.WebRequestMethods;
 
 namespace Web
 {
@@ -92,7 +93,12 @@ namespace Web
 
         private static string GetBooksAll() => "";
 
-        private static string GetRawgAll() => "";
+
+        private static string GetRawgAll()
+        {
+
+            return "https://api.rawg.io/api/tags?key=4ac16da180e847b3ba4cce6525a8bfdf";
+        }
 
         #endregion
 
@@ -137,6 +143,16 @@ namespace Web
 
             out string request)
         {
+
+            if(item is RawgTag tag)
+            {
+
+                request = string.Format("https://api.rawg.io/api/games?key=4ac16da180e847b3ba4cce6525a8bfdf&" +
+                    "tags={0}", tag.Slug);
+
+                return true;
+            }
+
 
             request = "";
 

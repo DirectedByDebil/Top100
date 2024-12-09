@@ -12,7 +12,10 @@ namespace Pages
 
         protected RestService Rest { get; private set; }
 
+
         protected abstract ContentType ContentType { get; }
+
+        protected abstract KeyValuePair<string, string> ApiToken { get; }
 
 
         private readonly ScratchesPage _scratchesPage;
@@ -26,6 +29,9 @@ namespace Pages
 		{
 
             Rest = new RestService();
+
+            Rest.AddHeader(ApiToken.Key, ApiToken.Value);
+           
 
 
 			InitializeComponent();
