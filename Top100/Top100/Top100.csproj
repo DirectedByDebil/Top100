@@ -95,6 +95,9 @@
 	  <Compile Update="Scratches\CurrentCollectionView.xaml.cs">
 	    <DependentUpon>CurrentCollectionView.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Scratches\CardBack.xaml.cs">
+	    <DependentUpon>CardBack.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 
@@ -130,6 +133,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Scratches\CurrentCollectionView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Scratches\CardBack.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

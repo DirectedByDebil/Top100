@@ -7,8 +7,9 @@
 
     
     <ContentPage.Content>
-        <local:ScratchCollectionView SelectionChanged="OnSelectionChanged">
-        </local:ScratchCollectionView>
+        
+        <local:AllCollectionsView SelectionChanged="OnSelectionChanged"/>
+
     </ContentPage.Content>
 
 </ContentPage>

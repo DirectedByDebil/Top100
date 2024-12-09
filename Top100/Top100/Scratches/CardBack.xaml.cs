@@ -7,8 +7,8 @@ using Microsoft.Maui.ApplicationModel;
 namespace Scratches
 {
 
-	public partial class CardBack : ContentView
-	{
+    public partial class CardBack : ContentView
+    {
 
         public event Action Scratched;
 
@@ -24,7 +24,7 @@ namespace Scratches
 
 
         public CardBack()
-		{
+        {
 
             _paint = new SKPaint()
             {
@@ -141,7 +141,7 @@ namespace Scratches
 
             if (_points.Count > MaxPoints)
             {
-                
+
                 IsEnabled = false;
 
                 IsVisible = false;
